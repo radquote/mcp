@@ -6,7 +6,7 @@ Pick the install path that matches you:
 
 | Your situation | Path |
 | --- | --- |
-| I use **Claude Desktop** and do not want to install Node or open a terminal | **[Claude Desktop UI](./docs/claude-desktop-gui.md)** — paste URL + API key into the Custom Connector form |
+| I use **Claude Desktop** and do not want to install Node or open a terminal | **[Claude Desktop UI](./docs/claude-desktop-gui.md)** — paste `https://api.limits.run/mcp?key=<YOUR_API_KEY>` into the Custom Connector form |
 | I am a developer, I have Node 18+, I use Cursor / Codex / Windsurf / Claude Code | **[One-command CLI](#one-command-cli)** |
 | I want a double-click install for Claude Desktop and have Node 18+ on my machine | **[.mcpb bundle](./docs/mcpb.md)** |
 
