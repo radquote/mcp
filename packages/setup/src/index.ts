@@ -12,7 +12,7 @@ interface ParsedArgs {
   apiKey: string | undefined;
   dryRun: boolean;
   force: boolean;
-  yes: boolean;
+  pick: boolean;
   help: boolean;
 }
 
@@ -23,7 +23,7 @@ function parseArgs(argv: string[]): ParsedArgs {
     apiKey: undefined,
     dryRun: false,
     force: false,
-    yes: false,
+    pick: false,
     help: false,
   };
 
@@ -32,8 +32,8 @@ function parseArgs(argv: string[]): ParsedArgs {
       parsed.help = true;
       continue;
     }
-    if (arg === '-y' || arg === '--yes') {
-      parsed.yes = true;
+    if (arg === '--pick') {
+      parsed.pick = true;
       continue;
     }
     if (arg === '--dry-run') {
@@ -72,14 +72,16 @@ radquote-mcp — install the rad quote MCP server into your AI clients
 Usage:
   radquote-mcp install [options]
 
+By default, installs into every detected supported client without asking.
+
 Options:
   --env=<prod|stage>   target environment (default: prod)
   --client=<name>      install into a specific client only; repeatable
                        (known: ${ALL_CLIENTS.map((c) => c.id).join(', ')})
+  --pick               show an interactive picker to select a subset of detected clients
   --api-key=<key>      non-interactive API key (otherwise prompted)
   --dry-run            print planned changes without writing
   --force              overwrite the server entry if it already exists
-  -y, --yes            skip the interactive client picker; use all detected
   -h, --help           show this message
 `);
 }
@@ -127,11 +129,8 @@ async function install(args: ParsedArgs): Promise<void> {
   }
 
   let selected: ClientDescriptor[];
-  if (args.clients.length > 0) {
+  if (args.clients.length > 0 || !args.pick || !process.stdin.isTTY) {
     selected = candidates;
-  } else if (args.yes || !process.stdin.isTTY) {
-    selected = candidates;
-    p.log.info('Non-interactive mode — installing into all detected clients.');
   } else {
     selected = await pickClients(candidates);
   }

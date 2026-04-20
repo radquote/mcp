@@ -20,15 +20,17 @@ npx @radquote/mcp-setup@alpha install --env=stage --client=cursor --client=claud
 
 Known client ids: `claude-code`, `claude-desktop`, `cursor`, `windsurf`, `codex`.
 
+By default, the installer configures **every detected supported client** without an interactive picker.
+
 ## Options
 
 ```
 --env=<prod|stage>   target environment (default: prod; prod is not wired in alpha)
 --client=<name>      install into a specific client only; repeatable
+--pick               show an interactive picker to narrow the install to a subset
 --api-key=<key>      non-interactive API key (otherwise prompted)
 --dry-run            print planned changes without writing
 --force              overwrite the server entry if it already exists
--y, --yes            skip the interactive client picker; use all detected
 -h, --help           show usage
 ```
 

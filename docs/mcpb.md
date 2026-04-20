@@ -1,6 +1,8 @@
 # Install rad quote in Claude Desktop (.mcpb)
 
-If you use **Claude Desktop**, you can install rad quote without the terminal. Everyone else, use [`@radquote/mcp-setup`](https://www.npmjs.com/package/@radquote/mcp-setup).
+> **Requires Node.js 18+** on your machine — Claude Desktop launches `node` to run the bundled proxy script. If Node is not installed, install it from [nodejs.org](https://nodejs.org) first (or `brew install node` on macOS). If you do not want to install Node, use the [Custom Connector UI path](./claude-desktop-gui.md) instead — that one needs nothing but Claude Desktop.
+
+If you already have Node 18+ and use **Claude Desktop**, this is the double-click install path. Everyone else, use the [CLI](../README.md#one-command-cli) or the [Custom Connector UI](./claude-desktop-gui.md).
 
 ## Steps
 
