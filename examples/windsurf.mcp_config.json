@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "radquote": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<MCP_URL>",
+        "--header",
+        "Authorization: Bearer <YOUR_API_KEY>"
+      ]
+    }
+  }
+}

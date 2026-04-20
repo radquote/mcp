@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "radquote": {
+      "url": "<MCP_URL>",
+      "headers": {
+        "Authorization": "Bearer <YOUR_API_KEY>"
+      }
+    }
+  }
+}

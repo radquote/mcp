@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.radquote/mcp",
+  "description": "rad quote — create projects from uploaded files and manage file uploads via MCP.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/radquote/mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://__RADQUOTE_PROD_URL__/mcp"
+    }
+  ]
+}
