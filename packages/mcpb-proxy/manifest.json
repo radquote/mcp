@@ -1,0 +1,41 @@
+{
+  "manifest_version": "0.2",
+  "name": "radquote-stage",
+  "display_name": "rad quote (stage)",
+  "version": "0.1.0",
+  "description": "Create rad quote projects from uploaded files via the stage MCP endpoint.",
+  "author": {
+    "name": "rad quote",
+    "url": "https://github.com/radquote"
+  },
+  "homepage": "https://github.com/radquote/mcp",
+  "documentation": "https://github.com/radquote/mcp/blob/main/docs/mcpb.md",
+  "support": "https://github.com/radquote/mcp/issues",
+  "license": "MIT",
+  "keywords": ["mcp", "radquote", "project-import"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "RADQUOTE_MCP_URL": "https://api.limits.run/mcp",
+        "RADQUOTE_MCP_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "rad quote API key",
+      "description": "Paste your rad quote workspace API key. Stored securely in the OS keychain.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.12.0",
+    "platforms": ["darwin", "win32", "linux"]
+  }
+}

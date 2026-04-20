@@ -1,0 +1,21 @@
+{
+  "name": "@radquote/mcpb-proxy",
+  "version": "0.1.0-stage.0",
+  "private": true,
+  "description": "Local MCPB bundle that proxies stdio MCP requests to the rad quote remote endpoint. Distributed as a .mcpb file via GitHub Releases; not published to npm.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit",
+    "validate": "mcpb validate manifest.json",
+    "pack:mcpb": "node scripts/pack.mjs"
+  },
+  "dependencies": {
+    "mcp-remote": "0.1.38"
+  }
+}

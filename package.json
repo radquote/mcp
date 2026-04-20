@@ -14,5 +14,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2"
   }
 }
