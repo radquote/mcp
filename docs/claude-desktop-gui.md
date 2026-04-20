@@ -17,7 +17,7 @@ This is the shortest path if you use **Claude Desktop** and do not want to insta
 4. **Add**.
 5. **Restart Claude Desktop** (Cmd+Q on macOS, then reopen).
 
-Start a new chat. The tools `get_upload_url` and `create_project_import_job` should appear when you ask Claude to create a project from a file.
+Start a new chat. The tools `get_upload_url`, `create_project_import_job`, and `get_project_import_job` should appear when you ask Claude to create a project from a file.
 
 ## Why the key goes in the URL
 

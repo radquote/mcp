@@ -30,10 +30,35 @@ If you prefer to edit configuration files yourself, copy the snippet for your cl
 
 ## What you get
 
-Two tools appear in your AI assistant:
+Three tools appear in your AI assistant:
 
 - `get_upload_url` — obtain a short-lived signed URL for uploading one file.
 - `create_project_import_job` — create a new project by importing tasks from previously uploaded files; optionally copy rates from an existing project as a read-only template.
+- `get_project_import_job` — look up the current status of an import job by id. When the job is complete, the response contains `project_id` of the newly created project; when it has failed, the response carries a human-readable `error`.
+
+And one orchestration prompt:
+
+- `estimate_project_workflow` — a single entry point that walks the agent through the full flow: upload the file, create the import job, poll the job every 15 seconds, and reply with a link to the resulting project (or with the failure reason). Arguments: `file` (required absolute local path), `title`, `client_title`, `minimum_budget`, `source_project_id` (all optional).
+
+## Workflow: create a project from a file
+
+The `estimate_project_workflow` prompt packages the full recipe so you do not have to spell out the steps to the agent. Invocation depends on the client:
+
+- **Claude Code:** `/mcp__radquote-stage__estimate_project_workflow`, then fill in `file` and the optional fields.
+- **Claude Desktop / Cursor / Windsurf:** pick `estimate_project_workflow` from your client's prompts menu and fill the arguments.
+- **Codex:** invoke via your normal MCP prompt command.
+
+> The workflow requires the agent to PUT the file to a signed URL. That means it works in clients that can run shell commands (Claude Code, Cursor, Codex, Windsurf) but not in Claude Desktop's built-in chat, which cannot perform arbitrary HTTP uploads. In Claude Desktop, upload the file some other way and then invoke `create_project_import_job` with its public URL directly.
+
+For reference, the PUT step looks like:
+
+```bash
+curl -X PUT --upload-file ./my-file.xlsx \
+  -H "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" \
+  "<upload_url>"
+```
+
+The response is `HTTP 201` with a JSON body containing `url` — feed that into `create_project_import_job.file`.
 
 ## Status
 

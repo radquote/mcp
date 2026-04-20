@@ -11,7 +11,7 @@ If you already have Node 18+ and use **Claude Desktop**, this is the double-clic
 3. Claude Desktop opens an install dialog. Paste your rad quote **API key** and click **Install**.
 4. Restart Claude Desktop.
 
-The tools `get_upload_url` and `create_project_import_job` will appear in your chats.
+The tools `get_upload_url`, `create_project_import_job`, and `get_project_import_job` will appear in your chats.
 
 ## Requirements
 
