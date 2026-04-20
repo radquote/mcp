@@ -1,7 +1,7 @@
 {
   "name": "@radquote/mcp-setup",
-  "version": "0.0.0",
-  "description": "One-command installer for the rad quote MCP server across AI clients (Claude Desktop/Code, Cursor, Codex, Windsurf, VS Code, Zed).",
+  "version": "0.1.0-alpha.1",
+  "description": "One-command installer for the rad quote MCP server across AI clients (Claude Desktop/Code, Cursor, Codex, Windsurf).",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -19,7 +19,8 @@
     "build": "tsc",
     "test": "node --import tsx --test test/*.test.ts",
     "dev": "tsx src/index.ts",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
@@ -38,7 +39,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/radquote/mcp.git",
+    "url": "git+https://github.com/radquote/mcp.git",
     "directory": "packages/setup"
   },
   "publishConfig": {
